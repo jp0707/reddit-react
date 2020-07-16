@@ -19,7 +19,7 @@ class Feed extends Component {
       return;
     }
 
-    let url = "http://www.reddit.com/r/aww/top/.json";
+    let url = "https://www.reddit.com/r/aww/top/.json";
     if (this.state.after) {
       url += "?after=" + this.state.after;
     }
