@@ -13,7 +13,12 @@ class Feed extends Component {
   }
 
 
-  getPosts(after) {
+  getPosts(after, abortOnError) {
+    if (this.state.error !== null && !abortOnError) {
+      // don't keep loading the page on error.
+      return;
+    }
+
     let url = "http://www.reddit.com/r/aww/top/.json";
     if (this.state.after) {
       url += "?after=" + this.state.after;
@@ -29,16 +34,15 @@ class Feed extends Component {
         },
         (error) => {
           this.setState({
-            error
+            error: error
           });
-          console.log("error");
-          console.log(error);
+          console.log("error:", error);
         }
       )
   }
 
   componentDidMount(){
-    this.getPosts(this.state.after);
+    this.getPosts(this.state.after, /* abortOnError = */false);
 
     // Trigger page load when loadingRef becomes visible
     var options = {
@@ -57,16 +61,18 @@ class Feed extends Component {
   handleObserver(entities, observer) {
     const y = entities[0].boundingClientRect.y;
     if (this.state.prevY > y) {
-      this.getPosts(this.state.after);
+      this.getPosts(this.state.after, /* abortOnError = */true);
     }
     this.setState({ prevY: y });
   }
 
   render() {
-    const { error, items, after } = this.state;
+    const { error, items } = this.state;
     let element;
     if (error) {
-      element = <span>Error: {error.message} <button onClick={this.getPosts(after)}> Retry</button></span>;
+      element = <span>Error: {error.message} <button onClick={() => {
+        this.getPosts(this.state.after, /* abortOnError = */false);
+      }}> Retry</button></span>;
     } else {
       element = <span>Loading...</span>;
     }
