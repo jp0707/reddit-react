@@ -1,0 +1,11 @@
+.vote-img {
+  height: 24pt;
+  cursor: pointer;
+  padding: 4pt;
+}
+
+.votes-count {
+  padding: 4pt;
+  align-items: center;
+  height: 100%;
+}

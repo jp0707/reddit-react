@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Title from './Title'
 import Media from './Media'
-import Upvote from './Upvote'
+import VoteButtons from './VoteButtons'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -22,14 +22,14 @@ class Post extends Component {
         </Card.Body>
         <Media url={this.props.data.url} is_video={this.props.data.is_video} poster={this.props.data.preview.images[0].source.url}/>
           <Row>
-            <Col className="col-sm-4">
-              <Upvote ups={this.props.data.ups}/>
+            <Col className="col-sm-6">
+              <VoteButtons ups={this.props.data.ups}/>
             </Col>
-            <Col className="col-sm-4">
-              <Upvote/>
+            <Col className="col-sm-3">
+              <button>Comment</button>
             </Col>
-            <Col className="col-sm-4">
-              <Upvote/>
+            <Col className="col-sm-3">
+              <button>Share</button>
             </Col>
           </Row>
         </Card>
