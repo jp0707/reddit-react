@@ -5,8 +5,7 @@ import Upvote from './Upvote'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-import './Post.css';
+import './css/Post.css';
 
 class Post extends Component {
   render() {
