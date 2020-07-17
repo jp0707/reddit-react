@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Post from './Post'
+import loading from './images/loading.gif';
+import './css/Feed.css'
 
 class Feed extends Component {
   constructor(props) {
@@ -74,7 +76,7 @@ class Feed extends Component {
         this.getPosts(this.state.after, /* abortOnError = */false);
       }}> Retry</button></span>;
     } else {
-      element = <span>Loading...</span>;
+      element = <div className="loading-container"><img src={loading} alt="Loading"/> Loading...</div>;
     }
     return (
       <React.Fragment>
