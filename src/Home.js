@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Post from './Post'
 import loading from './images/loading.gif';
-import './css/Feed.css'
+import { Link } from "react-router-dom";
 
-class Feed extends Component {
+class Home extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -14,14 +14,13 @@ class Feed extends Component {
     };
   }
 
-
   getPosts(after, abortOnError) {
     if (this.state.error !== null && !abortOnError) {
       // don't keep loading the page on error.
       return;
     }
 
-    let url = "https://www.reddit.com/r/"+this.props.subreddit+"/top/.json";
+    let url = "https://www.reddit.com/subreddits/.json";
     if (this.state.after) {
       url += "?after=" + this.state.after;
     }
@@ -42,7 +41,7 @@ class Feed extends Component {
         }
       )
   }
-
+  
   componentDidMount(){
     this.getPosts(this.state.after, /* abortOnError = */false);
 
@@ -50,7 +49,7 @@ class Feed extends Component {
     var options = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.5
+      threshold: 1.0
     };
     
     this.observer = new IntersectionObserver(
@@ -80,7 +79,25 @@ class Feed extends Component {
     }
     return (
       <React.Fragment>
-        {items.map(item => (<Post data={item.data} key={item.data.name}/>))}
+
+        <div> <h1> List of Subreddits </h1> </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Subreddit</th>
+              <th>Discription</th>
+            </tr>
+          </thead>
+          <tbody>
+          {items.map(item => (
+            <tr>
+              <td><Link to={item.data.url}>{item.data.display_name_prefixed}</Link></td>
+              <td>{item.data.public_description}</td>
+            </tr>))}
+          </tbody>
+        </table>
+
         <div ref={r => (this.loadingRef = r)}>
           {element}
         </div>
@@ -89,4 +106,4 @@ class Feed extends Component {
   }
 }
 
-export default Feed;
+export default Home;

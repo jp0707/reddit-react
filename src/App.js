@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import Feed from './Feed'
+import Home from './Home'
+import SubReddit from './SubReddit'
 import Container from 'react-bootstrap/Container';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Container>
-          <Feed />
-        </Container>
-      </div>
+      <Container>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/r/:subreddit/">
+              <SubReddit />
+            </Route>
+          </Switch>
+        </Router>
+      </Container>
     );
   }
 }
