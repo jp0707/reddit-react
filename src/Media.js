@@ -7,7 +7,7 @@ class Media extends Component {
       // TODO: Handle video types better!
       return(null);
     } else {
-      return (<img className="post-img" src={this.props.url}/>);
+      return (<img className="post-img" src={this.props.url} alt=""/>);
     }
   }
 }
