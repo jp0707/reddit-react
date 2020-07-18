@@ -3,7 +3,7 @@ import Home from './Home'
 import SubReddit from './SubReddit'
 import Container from 'react-bootstrap/Container';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
