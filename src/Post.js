@@ -18,20 +18,24 @@ class Post extends Component {
       <Row>
         <Card className="post-card">
           <Card.Body>
-        <Title value={this.props.data.title}/>
-        </Card.Body>
-        <Media url={this.props.data.url} is_video={this.props.data.is_video} poster={this.props.data.preview.images[0].source.url}/>
-          <Row>
-            <Col className="col-sm-6">
-              <VoteButtons ups={this.props.data.ups}/>
-            </Col>
-            <Col className="col-sm-3">
-              <button>Comment</button>
-            </Col>
-            <Col className="col-sm-3">
-              <button>Share</button>
-            </Col>
-          </Row>
+            <Title title={this.props.data.title} 
+              author={this.props.data.author} 
+              created_utc={this.props.data.created_utc}/>
+            </Card.Body>
+            <Media url={this.props.data.url} 
+              is_video={this.props.data.is_video} 
+              poster={this.props.data.preview.images[0].source.url}/>
+            <Row>
+              <Col className="col-sm-6">
+                <VoteButtons ups={this.props.data.ups}/>
+              </Col>
+              <Col className="col-sm-3">
+                <button>Comment</button>
+              </Col>
+              <Col className="col-sm-3">
+                <button>Share</button>
+              </Col>
+            </Row>
         </Card>
       </Row>
     );
