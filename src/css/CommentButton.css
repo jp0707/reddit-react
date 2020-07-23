@@ -1,0 +1,11 @@
+.comment-img {
+  height: 24pt;
+  cursor: pointer;
+  padding: 4pt;
+}
+
+.comment-count {
+  padding: 4pt;
+  align-items: center;
+  height: 100%;
+}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Title from './Title'
 import Media from './Media'
+import CommentButton from './CommentButton'
+import ShareButton from './ShareButton'
 import VoteButtons from './VoteButtons'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
@@ -26,14 +28,14 @@ class Post extends Component {
               is_video={this.props.data.is_video} 
               poster={this.props.data.preview.images[0].source.url}/>
             <Row>
-              <Col className="col-sm-6">
+              <Col className="col-sm-4">
                 <VoteButtons ups={this.props.data.ups}/>
               </Col>
-              <Col className="col-sm-3">
-                <button>Comment</button>
+              <Col className="col-sm-4">
+                <CommentButton commentCount={this.props.data.num_comments}></CommentButton>
               </Col>
-              <Col className="col-sm-3">
-                <button>Share</button>
+              <Col className="col-sm-4">
+                <ShareButton url={this.props.data.url}></ShareButton>
               </Col>
             </Row>
         </Card>
