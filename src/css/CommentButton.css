@@ -2,6 +2,7 @@
   height: 24pt;
   cursor: pointer;
   padding: 4pt;
+  cursor: default;
 }
 
 .comment-count {

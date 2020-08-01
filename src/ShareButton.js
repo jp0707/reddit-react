@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import upvote from './images/upvote.jpeg';
+import share from './images/share.jpg';
 import './css/ShareButton.css'
 import copy from 'copy-to-clipboard';
 import Toast from 'react-bootstrap/Toast'
@@ -23,7 +23,7 @@ class ShareButton extends Component {
   render() {
     return (
       <React.Fragment>
-        <img src={upvote} alt="Share" onClick={this.onShareClick} className="share-img"/>
+        <img src={share} alt="Share" onClick={this.onShareClick} className="share-img"/>
         <Toast
           onClose={() => this.setState({showCopied:false})}
           show={this.state.showCopied}

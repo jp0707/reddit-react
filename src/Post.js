@@ -18,7 +18,7 @@ class Post extends Component {
 
     return (
       <Row>
-        <Card className="post-card">
+        <Card className="post-card" style={{margin: 5}}>
           <Card.Body>
             <Title title={this.props.data.title} 
               author={this.props.data.author} 
@@ -28,13 +28,13 @@ class Post extends Component {
               is_video={this.props.data.is_video} 
               poster={this.props.data.preview.images[0].source.url}/>
             <Row>
-              <Col className="col-sm-4">
+              <Col className="col-sm-4" align="center">
                 <VoteButtons ups={this.props.data.ups}/>
               </Col>
-              <Col className="col-sm-4">
+              <Col className="col-sm-4" align="center">
                 <CommentButton commentCount={this.props.data.num_comments}></CommentButton>
               </Col>
-              <Col className="col-sm-4">
+              <Col className="col-sm-4" align="center">
                 <ShareButton url={this.props.data.url}></ShareButton>
               </Col>
             </Row>
