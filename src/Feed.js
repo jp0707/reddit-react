@@ -72,9 +72,12 @@ class Feed extends Component {
     const { error, items } = this.state;
     let element;
     if (error) {
-      element = <span>Error: {error.message} <button onClick={() => {
-        this.getPosts(this.state.after, /* abortOnError = */false);
-      }}> Retry</button></span>;
+      element = <span>Error: Failed to fetch the data. Make sure your browser has 
+                <a href="https://github.com/jp0707/reddit-react/blob/master/README.md#disable-cors">
+                CORS disabled</a>.
+                <button onClick={() => {
+                  this.getPosts(this.state.after, /* abortOnError = */false);
+                }}> Retry</button></span>;
     } else {
       element = <div className="loading-container"><img src={loading} alt="Loading"/> Loading...</div>;
     }
