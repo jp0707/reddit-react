@@ -10,7 +10,8 @@ class Feed extends Component {
       error: null,
       after: null,
       items: [],
-      prevY: 0
+      prevY: 0,
+      endReached: false
     };
   }
 
@@ -31,7 +32,8 @@ class Feed extends Component {
         (result) => {
           this.setState({
             items: [...this.state.items, ...result.data.children],
-            after : result.data.after
+            after : result.data.after,
+            endReached: result.data.after === null,
           });
         },
         (error) => {
@@ -62,15 +64,15 @@ class Feed extends Component {
 
   handleObserver(entities, observer) {
     const y = entities[0].boundingClientRect.y;
-    if (this.state.prevY > y) {
+    if (this.state.prevY > y && !this.state.endReached) {
       this.getPosts(this.state.after, /* abortOnError = */true);
     }
     this.setState({ prevY: y });
   }
 
   render() {
-    const { error, items } = this.state;
-    let element;
+    const { error, items, endReached } = this.state;
+    let element = null;
     if (error) {
       element = <span>Error: Failed to fetch the data. Make sure your browser has 
                 <a href="https://github.com/jp0707/reddit-react/blob/master/README.md#disable-cors">
@@ -78,7 +80,7 @@ class Feed extends Component {
                 <button onClick={() => {
                   this.getPosts(this.state.after, /* abortOnError = */false);
                 }}> Retry</button></span>;
-    } else {
+    } else if (!endReached) {
       element = <div className="loading-container"><img src={loading} alt="Loading"/> Loading...</div>;
     }
     return (
