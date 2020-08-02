@@ -9,10 +9,10 @@ class Title extends Component {
             </Moment> ;
     return (
       <div>
-        <Card.Text>
+        <Card.Title>
           {this.props.title}
-        </Card.Text>
-        <Card.Text>
+        </Card.Title>
+        <Card.Text style={{ 'font-size': '0.75rem' }}>
           Posted by : '{this.props.author}' --- <Moment fromNow>{currentTime}</Moment>
         </Card.Text>
       </div>
