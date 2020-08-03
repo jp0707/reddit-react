@@ -15,3 +15,11 @@ Here are the addons/extensions that allow disabling CORS protections temporarily
 
 - [Chrome extension](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf)
 - [Mozilla Add on](https://addons.mozilla.org/en-CA/firefox/addon/access-control-allow-origin/)
+
+# Feature List
+
+- Voting
+- Comment count
+- Share
+- Infinite scrolling
+- Screen Navigation
