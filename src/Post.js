@@ -35,7 +35,7 @@ class Post extends Component {
                 <CommentButton commentCount={this.props.data.num_comments}></CommentButton>
               </Col>
               <Col className="col-sm-4" align="center">
-                <ShareButton url={this.props.data.url}></ShareButton>
+                <ShareButton title={this.props.data.title} url={this.props.data.url}></ShareButton>
               </Col>
             </Row>
         </Card>

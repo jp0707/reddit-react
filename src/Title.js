@@ -12,7 +12,7 @@ class Title extends Component {
         <Card.Title>
           {this.props.title}
         </Card.Title>
-        <Card.Text style={{ 'font-size': '0.75rem' }}>
+        <Card.Text style={{ 'fontSize': '0.75rem' }}>
           Posted by : '{this.props.author}' --- <Moment fromNow>{currentTime}</Moment>
         </Card.Text>
       </div>

@@ -14,10 +14,21 @@ class ShareButton extends Component {
   }
 
   onShareClick = () => {
-    copy(this.props.url);
-    this.setState({
-      showCopied: true
-    })
+    const shareData = {
+      title: this.props.title,
+      text: this.props.title,
+      url: this.props.url,
+    };
+    if(navigator.canShare && navigator.canShare(shareData)) {
+      navigator.share(shareData)
+        .then(() => console.log('Share was successful.'))
+        .catch((error) => console.log('Sharing failed!' + error))
+    } else {
+      copy(this.props.url);
+      this.setState({
+        showCopied: true
+      })
+    }
   }
 
   render() {
